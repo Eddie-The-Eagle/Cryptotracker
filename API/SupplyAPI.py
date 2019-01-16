@@ -5,8 +5,6 @@ import re
 import requests
 import platform
 
-# Hello there github
-
 try:
     to_unicode = unicode
 except NameError:
