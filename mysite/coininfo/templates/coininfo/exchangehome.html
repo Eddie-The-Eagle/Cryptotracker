@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+{% extends "coininfo/base.html" %}
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+	<script type="text/javascript" src="{% static 'coininfo/js/jquery-3.3.1.js' %}"></script>
+	<script type="text/javascript" src="{% static 'coininfo/js/jquery.dataTables.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'coininfo/js/dataTables.bootstrap4.min.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'coininfo/css/theme.css' %}" type="text/css"> 
+	<link rel="stylesheet" href="{% static 'coininfo/css/dataTables.bootstrap4.min.css' %}" type="text/css"> 
+	<link rel="stylesheet" href="{% static 'coininfo/css/bootstrap.css' %}" type="text/css"> 
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable({
+        "lengthMenu": [[100, 250, 500, -1], [100, 250, 500, "All"]]
+    },{
+        "order": [[ 0, "asc" ]]
+    }, {
+        "language": {
+            "decimal": ".",
+            "thousands": ","
+        }
+    });
+	
+} );
+</script>
+</head>
+<body>
+
+<div class="col-sm-12">
+	<div class="container-fluid w-75 h-75">
+	  <table id="myTable" class="tablesorter table-hover table-striped table-bordered table-sm" width="100%">
+				<thead>
+					 <tr>
+						<th>Rank</th>
+						<th>Exchange</th>
+						<th>Volume</th>
+					</tr>
+				</thead>
+			<tbody>
+			{{CoinTop100Table | safe }}
+			</tbody>
+	  </table>
+	</div>
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+{% endblock %}
+</html>

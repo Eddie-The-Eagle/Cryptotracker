@@ -12,6 +12,7 @@ import platform
 from pathlib import Path
 import threading
 
+
 try:
     to_unicode = unicode
 except NameError:

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+{% extends "coininfo/base.html" %}
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+	<script type="text/javascript" src="{% static 'coininfo/js/jquery-3.3.1.js' %}"></script>
+	<script type="text/javascript" src="{% static 'coininfo/js/jquery.dataTables.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'coininfo/js/dataTables.bootstrap4.min.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'coininfo/css/theme.css' %}" type="text/css"> 
+	<link rel="stylesheet" href="{% static 'coininfo/css/dataTables.bootstrap4.min.css' %}" type="text/css"> 
+	<link rel="stylesheet" href="{% static 'coininfo/css/bootstrap.css' %}" type="text/css"> 
+<script>
+$(document).ready(function() {
+    $('#myTable').DataTable({
+        "paging":   false,
+        "info":     false,
+        "order": [[ 3, "desc" ]]
+    });
+	
+} );
+</script>
+</head>
+<body>
+  <div class="px-3">
+    <div class="container-fluid w-75 h-75">
+      <div class="row d-flex p-2 justify-content-start align-items-start align-self-start flex-row">
+        <div class="col-md-6.5 d-flex flex-column justify-content-start align-items-start align-self-center">
+          {{exchangeLogo | safe}}
+        <div class="col-md-6 d-flex flex-column align-self-center">
+          <div class="row d-flex">
+            <div class="col-md-12">
+              <h1 class="text-capitalize my-auto text-nowrap">
+                <b class="">{{ exchangeName }}</b>
+              </h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 d-flex flex-column justify-content-start align-self-center align-items-start">
+              <p class="lead my-auto text-capitalize">
+                <b>${{ exchangeVolumeUSD }} &nbsp;</b>
+              </p>
+            </div>
+            <div class="col-md-3 d-flex flex-column justify-content-start align-items-start align-self-center">
+              <p class="lead text-center my-auto text-capitalize">
+                <b>{{ exchangeChange }}% </b>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 d-flex flex-column align-self-center justify-content-start align-items-start">
+              <p class="lead my-auto text-capitalize">
+                <b>₿{{ exchangeVolumeBTC }} </b>
+              </p>
+          </div>
+        </div>
+        <div>
+          <div class="row d-flex align-items-start align-self-start flex-row justify-content-start"> </div>
+        </div>
+      </div>
+      <div class="row d-flex flex-row align-self-stretch align-items-stretch justify-content-around">
+        <div class="c0">
+		{%if coinWebsite != '' and coinWebsite != '?'%}
+          <div class="row d-flex p-2">
+            <div class="col-md-2 d-flex flex-column justify-content-start align-items-start align-self-center">
+              <img class="d-block" src="{% static 'coininfo/img/Icons/Website.png' %}" width="25" height="25"> </div>
+            <div class="col-md-5 d-flex flex-column">
+              <p class="text-center my-auto text-capitalize">
+                <a href="{{coinWebsite}}" target="_blank">Website</a>
+              </p>
+            </div>
+          </div>
+		  {%endif%}
+		  {%if coinExplorer != ''%}
+          <div class="row p-2">
+            <div class="col-md-2 d-flex flex-column justify-content-start align-items-start align-self-center">
+              <img class="d-block" src="{% static 'coininfo/img/Icons/BlockExplorer.png' %}" width="25"> </div>
+            <div class="col-md-3 d-flex flex-column justify-content-start align-items-start align-self-center">
+              <p class="my-auto text-capitalize">
+                <a href="{{coinExplorer}}" target="_blank">Explorer</a>
+              </p>
+			 
+            </div>
+          </div>
+		   {%endif%}
+		  {%if coinBitcoinTalk != ''%}
+          <div class="row p-2">
+            <div class="col-md-2 d-flex flex-column justify-content-start align-items-start align-self-center">
+              <img class="d-block" src="{% static 'coininfo/img/Icons/BitcoinTalk.png' %}" width="25" height="25"> </div>
+            <div class="col-md-4">
+              <p class="my-auto text-capitalize">
+                <a href="{{coinBitcoinTalk}}" target="_blank">BitcoinTalk</a>
+              </p>
+            </div>
+          </div>
+		  {%endif%}
+		  {%if coinGithub != ''%}
+          <div class="row p-2">
+            <div class="col-md-2 d-flex flex-column justify-content-start align-items-start align-self-center">
+              <img class="d-block" src="{% static 'coininfo/img/Icons/Github.png' %}" width="25" height="25"> </div>
+            <div class="col-md-3">
+              <p class="my-auto text-capitalize">
+                <a href="{{coinGithub}}" target="_blank">Github</a>
+              </p>
+            </div>
+          </div>
+		   {%endif%}
+		   {%if coinTwitter != '' and coinTwitter != '?'%}
+          <div class="row p-2">
+            <div class="col-md-2 d-flex flex-column justify-content-start align-items-start align-self-center">
+              <img class="d-block" src="{% static 'coininfo/img/Icons/Twitter.png' %}" width="25" height="25"> </div>
+            <div class="col-md-4">
+              <p class="my-auto text-capitalize">
+                <a href="{{coinTwitter}}" target="_blank">Twitter</a>
+              </p>
+            </div>
+          </div>
+		  {%endif%}
+		  {%if coinReddit != ''%}
+          <div class="row p-2">
+            <div class="col-md-2 d-flex flex-column align-self-center justify-content-center align-items-start">
+              <img class="d-block" src="{% static 'coininfo/img/Icons/Reddit.png' %}" width="25" height="25"> </div>
+            <div class="col-md-4">
+              <p class="my-auto text-capitalize">
+                <a href="{{coinReddit}}" target="_blank">Reddit</a>
+              </p>
+            </div>
+          </div>
+		  {%endif%}
+		  {%if coinDiscord != ''%}
+          <div class="row align-self-start align-items-start justify-content-start flex-row d-flex p-1">
+            <div class="col-md-2 d-flex flex-column justify-content-start align-items-start align-self-center">
+              <img class="d-block" src="{% static 'coininfo/img/Icons/Discord.png' %}" width="25" height="25"> </div>
+            <div class="col-md-4">
+              <p class="my-auto text-capitalize">
+                <a href="{{coinDiscord}}" target="_blank">Discord</a>
+              </p>
+            </div>
+          </div>
+		  {%endif%}
+		  <div class="row p-2">
+            <div class="col-md-2 d-flex flex-column align-self-center justify-content-center align-items-start">
+              <p>                  </p></div>
+            <div class="col-md-4">
+              <p>                    </p>
+            </div>
+          </div>
+        </div>
+		<div class="col-md-7">
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Marketcap</th>
+                    <th>Volume</th>
+                    <th class="text-capitalize text-nowrap">Circulating Supply</th>
+                    <th class="align-items-start text-capitalize text-nowrap">Max Supply</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>${{ coinMarketcap }}</td>
+                    <td>${{ coinVolume }}</td>
+                    <td>{{ coinCircSupply }} {{ coinShort }}</td>
+                    <td>{{ coinMaxSupply }} {{ coinShort }}</td>
+                  </tr>
+                  <tr></tr>
+                  <tr></tr>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a href="" class="active nav-link" data-toggle="tab" data-target="#tabone">Chart</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="" data-toggle="tab" data-target="#tabtwo">Exchanges</a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link" data-toggle="tab" data-target="#tabthree">Tab 3</a>
+                </li>
+              </ul>
+              <div class="tab-content mt-2">
+                <div class="tab-pane fade show active" id="tabone" role="tabpanel">
+                  <p class="">Input Chart Here</p>
+                </div>
+                <div class="tab-pane fade" id="tabtwo" role="tabpanel">
+                  <table id="myTable" class="tablesorter table-hover table-striped table-bordered table-sm" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Trading Pair</th>
+                        <th>Price</th>
+                        <th>Volume</th>
+						<th>Last Updated</th>
+                      </tr>
+                    </thead>
+					<tbody>{{ExchangeTable | safe }}</tbody>
+                  </table>
+                </div>
+                <div class="tab-pane fade" id="tabthree" role="tabpanel">
+                  <p class="">Tab pane three. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2 col-md-3">
+          <div class="card">
+            <div class="card-header"> Exchange Information</div>
+            <div class="card-body">
+              <h4>{{ coinLong }}</h4>
+              <h6 class="text-muted">{{ coinShort }}</h6>
+              <p class="">All time high: $19.000,00
+				<br>All time high BTC: ₿1
+                <br>Change All time high:&nbsp;▼ 60.0%
+                <br>
+                <br>Trading Pairs: 500
+                <br>Algorithm: SHA256
+                <br>Masternodes: No
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+{% endblock %}
+</html>
