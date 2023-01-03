@@ -4,7 +4,7 @@ Due to it being an old project an requiring several calls to external parties th
 
 The goal of the project was to create an application that gave up-to-date information about the price of cryptocurrencies and allowed you to manage a portfolio.
 
-The frontend for this project has been lost through the ages, it used to be a desktop application written in Python with QTinker, and eventually evolved into a Django Website.
+The frontend code for this project has been lost through the ages, it used to be a desktop application written in Python with QTinker, and eventually evolved into a Django Website. The .EXE for the old Frontend UI is still included, however it no longer works with any other part of the code.
 The API part of the code is responsible for getting data from several cryptocurrency exchanges, combining the data, and making some calculations with said data.
 The API call's results were saved in a .JSON file and could later be used in the desktop app, website, or Discord.
 The Discord Bot gave information about a specific cryptocurrency if called upon by a command.
